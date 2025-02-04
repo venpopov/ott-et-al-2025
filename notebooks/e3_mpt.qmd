@@ -1,0 +1,170 @@
+---
+title: "Reproduce MPT analysis of E3"
+format: html
+author: Ven Popov
+execute: 
+  error: true
+---
+
+```{r setup}
+#| include: false
+knitr::opts_knit$set(root.dir = here::here())
+options(tidyverse.quiet = TRUE, readr.show_col_types = FALSE)
+```
+
+```{r}
+#| label: package-load
+#| message: false
+library(readr)
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(MPTinR)
+library(brms)
+library(cmdstanr)
+```
+
+Get the number of observations per condition and response type for the source
+```{r}
+#| label: load-data
+events_file <- "data/E3_events.csv"
+
+if (!file.exists(events_file)) {
+  source("R/export_aggregate_events.r")
+  read_csv("data/E3_data.csv") |> 
+    aggregate_event_counts() |> 
+    write_csv(events_file)
+} 
+
+data <- read_csv(events_file)
+```
+
+It is in long format:
+
+```{r}
+#| label: preview-data
+head(data, n = 20) |> kable()
+```
+
+
+## Fit authors' MPT model with MPTinR
+
+The full model in the paper is: (figure from the paper):
+
+![](./mpt_tree_figure.png)
+
+which we can express as
+
+```{r}
+#| label: full_model
+full_model <- "
+# Responses to R Items from Source A (order: Source A, Source B and New)
+D_R * (1-d_RA) * a + (1-D_R) * b * g + D_R * d_RA
+D_R * (1-d_RA) * (1-a) + (1-D_R) * b * (1-g)
+(1-D_R) * (1-b)
+
+# Responses to R Items from Source B (order: Source A, Source B and New)
+D_R * (1-d_RB) * a + (1-D_R) * b * g
+D_R * (1-d_RB) * (1-a) + (1-D_R) * b * (1-g) + D_R * d_RB
+(1-D_R) * (1-b)
+
+# Responses to R Items from Source A (order: Source A, Source B and New)
+D_F * (1-d_FA) * a + (1-D_F) * b * g + D_F * d_FA
+D_F * (1-d_FA) * (1-a) + (1-D_F) * b * (1-g)
+(1-D_F) * (1-b)
+
+# Responses to R Items from Source B (order: Source A, Source B and New)
+D_F * (1-d_FB) * a + (1-D_F) * b * g
+D_F * (1-d_FB) * (1-a) + (1-D_F) * b * (1-g) + D_F * d_FB
+(1-D_F) * (1-b)
+
+# Responses to New Items (order: Source A, Source B and New)
+(1-D_N) * b * g
+(1-D_N) * b * (1-g)
+(1-D_N) * (1-b) + D_N
+"
+```
+
+Check that the model specification doesn't violate any assumptions:
+
+```{r}
+#| label: check_model
+check.mpt(textConnection(full_model))
+```
+
+They restricted some parameters: 
+
+"We set $d_{RA}$ = $d_{RB}$ (labeled as $d_R$), $d_{FA}$ = $d_{FB}$ (labeled as $d_{F}$), and $D_{new}$ = $D_{R}$"
+
+which we can specify as a string as well:
+
+```{r}
+#| label: mpt_restriction
+mpt_restrictions <- "
+d_RA = d_RB
+d_FA = d_FB
+D_R = D_N
+"
+```
+
+For MPTinR we need the data to be a matrix where each row is an entire dataset (e.g. participant), and the columns represent the number of responses for each condition by response combination. The order needs to match the order of the model components listed above. We'll need to do some data magic. First ensure correct ordering:
+
+```{r}
+#| label: rearrange-data
+data <- data |> 
+  mutate(item_type = case_when(
+    item_type == "R item" ~ "R",
+    item_type == "F item" ~ "F",
+    item_type == "distractor" ~ "D"
+  )) |> 
+  arrange(id, desc(item_type), source, resp)
+head(data, 15)
+```
+
+then pivot to wide and change to matrix:
+
+```{r}
+#| label: df-to-wide-matrix
+data_mat <- data |> 
+  pivot_wider(names_from = c("item_type", "source", "resp"), values_from = "n") |> 
+  select(-id) |> 
+  as.matrix()
+str(data_mat)
+colnames(data_mat)
+```
+
+and now we can finally estimate the model with MPTinR:
+
+```{r}
+#| label: mpt_fit
+#| cache: true
+#| collapse: true
+#| comment: "#>"
+mpt_fit <- fit.mpt(
+  data = data_mat, 
+  model.filename = textConnection(full_model), 
+  restrictions.filename = textConnection(mpt_restrictions)
+)
+```
+
+We get lots of convergence warnings for the individual subjects. Not surprising since many participants lack observations in some cells. 
+
+The authors of the paper only fitted the model on the aggregated data. `fit.mpt` automatically fits both the individual subjects and the aggregated data, so we can check out the aggregate fits. First, some info statistics:
+
+```{r}
+#| label: mpt-statistics
+mpt_fit$goodness.of.fit$aggregated
+mpt_fit$information.criteria$aggregated
+mpt_fit$model.info$aggregated
+```
+
+And the parameter estimates:
+
+```{r}
+agg_est <- mpt_fit$parameters$aggregated
+par_order <- c("a", "b", "g", "D_R", "D_F", "d_RA", "d_FA")
+idx <- match(par_order, rownames(agg_est))
+print(agg_est[idx,], digits = 3)
+```
+
+Thankfully that matches exactly the results from the paper, so I know I didn't mess up anything in the data transformation.

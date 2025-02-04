@@ -13,6 +13,13 @@
     ]
   },
   "Packages": {
+    "BH": {
+      "Package": "BH",
+      "Version": "1.87.0-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "468d9a03ba57f22ebde50060fd13ba9f"
+    },
     "BayesFactor": {
       "Package": "BayesFactor",
       "Version": "0.9.12-4.7",
@@ -34,6 +41,18 @@
         "utils"
       ],
       "Hash": "5dac49252d6f980e39b2f2d04dd09421"
+    },
+    "Brobdingnag": {
+      "Package": "Brobdingnag",
+      "Version": "1.2-9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R",
+        "methods"
+      ],
+      "Hash": "00077243042334c50b74cdfafe172870"
     },
     "DBI": {
       "Package": "DBI",
@@ -129,6 +148,22 @@
       ],
       "Hash": "0cafd6f0500e5deba33be22c46bf6055"
     },
+    "MPTinR": {
+      "Package": "MPTinR",
+      "Version": "1.14.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Brobdingnag",
+        "R",
+        "Rcpp",
+        "RcppEigen",
+        "numDeriv",
+        "stats",
+        "utils"
+      ],
+      "Hash": "81bf68ce57ec1d5b582567625ee2eaab"
+    },
     "Matrix": {
       "Package": "Matrix",
       "Version": "1.7-1",
@@ -169,6 +204,13 @@
         "stats"
       ],
       "Hash": "b4a018aaaa8849665aea88a073207f76"
+    },
+    "QuickJSR": {
+      "Package": "QuickJSR",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6df3e8d7718ee15be75dc27753f96628"
     },
     "R6": {
       "Package": "R6",
@@ -229,6 +271,16 @@
       ],
       "Hash": "4ac8e423216b8b70cb9653d1b3f71eb9"
     },
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.1.10",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "34ee3ba92c1b2df651980325523ed22a"
+    },
     "Rdpack": {
       "Package": "Rdpack",
       "Version": "2.6.2",
@@ -256,6 +308,22 @@
         "utils"
       ],
       "Hash": "e78499cbcbbca98200254bd171379165"
+    },
+    "StanHeaders": {
+      "Package": "StanHeaders",
+      "Version": "2.36.0.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/rstan",
+      "RemoteRef": "develop",
+      "RemoteSha": "2c72f4fca72cc1c404fed2dd58cea93438385c5f",
+      "RemoteSubdir": "StanHeaders",
+      "Requirements": [
+        "R",
+        "RcppEigen",
+        "RcppParallel"
+      ],
+      "Hash": "1af860fe6dee400b42d46e606902fbc0"
     },
     "TH.data": {
       "Package": "TH.data",
@@ -329,6 +397,29 @@
       ],
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
     },
+    "bayesplot": {
+      "Package": "bayesplot",
+      "Version": "1.11.1.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/bayesplot",
+      "RemoteSha": "20910f5f43a6966291d7495c2548c46c450060b6",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "ggplot2",
+        "ggridges",
+        "glue",
+        "posterior",
+        "reshape2",
+        "rlang",
+        "stats",
+        "tibble",
+        "tidyselect",
+        "utils"
+      ],
+      "Hash": "ee13c29c46e794d2776bfe96419d9837"
+    },
     "bit": {
       "Package": "bit",
       "Version": "4.5.0.1",
@@ -384,6 +475,60 @@
         "stats"
       ],
       "Hash": "de2a4646c18661d6a0a08ec67f40b7ed"
+    },
+    "bridgesampling": {
+      "Package": "bridgesampling",
+      "Version": "1.1-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Brobdingnag",
+        "Matrix",
+        "R",
+        "coda",
+        "methods",
+        "mvtnorm",
+        "parallel",
+        "scales",
+        "stringr",
+        "utils"
+      ],
+      "Hash": "a64d4be61a31696fec80dc24cef69a9c"
+    },
+    "brms": {
+      "Package": "brms",
+      "Version": "2.22.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R",
+        "Rcpp",
+        "abind",
+        "backports",
+        "bayesplot",
+        "bridgesampling",
+        "coda",
+        "future",
+        "future.apply",
+        "ggplot2",
+        "glue",
+        "grDevices",
+        "loo",
+        "matrixStats",
+        "methods",
+        "mgcv",
+        "nleqslv",
+        "nlme",
+        "parallel",
+        "posterior",
+        "rlang",
+        "rstan",
+        "rstantools",
+        "stats",
+        "utils"
+      ],
+      "Hash": "12f0136fdf0a8c5f0e65cc7cef84dfe5"
     },
     "broom": {
       "Package": "broom",
@@ -519,6 +664,18 @@
       ],
       "Hash": "f61dbaec772ccd2e17705c1e872e9e7c"
     },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "2.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "backports",
+        "utils"
+      ],
+      "Hash": "0e14e01ce07e7c88fd25de6d4260d26b"
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.3",
@@ -539,6 +696,27 @@
         "utils"
       ],
       "Hash": "3f038e5ac7f41d4ac41ce658c85e3042"
+    },
+    "cmdstanr": {
+      "Package": "cmdstanr",
+      "Version": "0.8.1",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/cmdstanr",
+      "RemoteRef": "v0.8.1",
+      "RemoteSha": "02259ef7aa2a8b1c8de2fa3fc42a9feafd789288",
+      "Requirements": [
+        "R",
+        "R6",
+        "checkmate",
+        "data.table",
+        "jsonlite",
+        "posterior",
+        "processx",
+        "rlang",
+        "withr"
+      ],
+      "Hash": "e3409949f3437c53affcf4447c9aaace"
     },
     "coda": {
       "Package": "coda",
@@ -704,6 +882,19 @@
       ],
       "Hash": "0a861334beb4eb8ca0d24a27b28b6679"
     },
+    "desc": {
+      "Package": "desc",
+      "Version": "1.4.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "cli",
+        "utils"
+      ],
+      "Hash": "99b79fcbd6c4d1ce087f5c5c758b384f"
+    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.37",
@@ -714,6 +905,23 @@
         "utils"
       ],
       "Hash": "33698c4b3127fc9f506654607fb73676"
+    },
+    "distributional": {
+      "Package": "distributional",
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "generics",
+        "lifecycle",
+        "numDeriv",
+        "pillar",
+        "rlang",
+        "stats",
+        "utils",
+        "vctrs"
+      ],
+      "Hash": "76e94de462aa18ea966a38956ecf4497"
     },
     "doBy": {
       "Package": "doBy",
@@ -895,6 +1103,35 @@
       ],
       "Hash": "7f48af39fa27711ea5fbd183b399920d"
     },
+    "future": {
+      "Package": "future",
+      "Version": "1.34.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "digest",
+        "globals",
+        "listenv",
+        "parallel",
+        "parallelly",
+        "utils"
+      ],
+      "Hash": "475771e3edb711591476be387c9a8c2e"
+    },
+    "future.apply": {
+      "Package": "future.apply",
+      "Version": "1.11.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "future",
+        "globals",
+        "parallel",
+        "utils"
+      ],
+      "Hash": "0efead26b03bb60716ed29971b1953dc"
+    },
     "gargle": {
       "Package": "gargle",
       "Version": "1.5.2",
@@ -1057,6 +1294,17 @@
         "utils"
       ],
       "Hash": "60efa3bc3aaa341339617681e7b88b68"
+    },
+    "globals": {
+      "Package": "globals",
+      "Version": "0.16.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "codetools"
+      ],
+      "Hash": "2580567908cafd4f187c1e5a91e98b7f"
     },
     "glue": {
       "Package": "glue",
@@ -1310,6 +1558,16 @@
       ],
       "Hash": "99df65cfef20e525ed38c3d2577f7190"
     },
+    "inline": {
+      "Package": "inline",
+      "Version": "0.3.21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods"
+      ],
+      "Hash": "a816db522447eb5ca56e7d4e6e82e4eb"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
@@ -1463,6 +1721,16 @@
       ],
       "Hash": "b8552d117e1b808b09a832f589b79035"
     },
+    "listenv": {
+      "Package": "listenv",
+      "Version": "0.9.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "e2fca3e12e4db979dccc6e519b10a7ee"
+    },
     "lme4": {
       "Package": "lme4",
       "Version": "1.1-36",
@@ -1519,6 +1787,23 @@
       ],
       "Hash": "c6fafa6cccb1e1dfe7f7d122efd6e6a7"
     },
+    "loo": {
+      "Package": "loo",
+      "Version": "2.8.0.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/loo",
+      "RemoteSha": "931b83dd186c48861b575428b5a2a5896a69c534",
+      "Requirements": [
+        "R",
+        "checkmate",
+        "matrixStats",
+        "parallel",
+        "posterior",
+        "stats"
+      ],
+      "Hash": "1b92ac0a77ab78eb505145abb7f7150f"
+    },
     "lubridate": {
       "Package": "lubridate",
       "Version": "1.9.4",
@@ -1541,6 +1826,16 @@
         "R"
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
+    },
+    "matrixStats": {
+      "Package": "matrixStats",
+      "Version": "1.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "9fd316b52ac8c24fef4c67fdd646e965"
     },
     "memoise": {
       "Package": "memoise",
@@ -1685,6 +1980,13 @@
       ],
       "Hash": "c7241e6be9d6df551a2e539a50f5c875"
     },
+    "nleqslv": {
+      "Package": "nleqslv",
+      "Version": "3.3.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "982736cfb7276c4d9a2afa4e6b8e95a4"
+    },
     "nlme": {
       "Package": "nlme",
       "Version": "3.1-166",
@@ -1737,6 +2039,18 @@
         "askpass"
       ],
       "Hash": "37a7f0abce0349f5950ce49f38c7626b"
+    },
+    "parallelly": {
+      "Package": "parallelly",
+      "Version": "1.42.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "parallel",
+        "tools",
+        "utils"
+      ],
+      "Hash": "78f830734a4b488f2c72bf00cde6381e"
     },
     "patchwork": {
       "Package": "patchwork",
@@ -1809,6 +2123,21 @@
       ],
       "Hash": "8b16b6097daef84cd3c40a6a7c5c9d86"
     },
+    "pkgbuild": {
+      "Package": "pkgbuild",
+      "Version": "1.4.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "callr",
+        "cli",
+        "desc",
+        "processx"
+      ],
+      "Hash": "2914aa6216361f59e40d5c84667ac155"
+    },
     "pkgconfig": {
       "Package": "pkgconfig",
       "Version": "2.0.3",
@@ -1840,6 +2169,30 @@
         "stats"
       ],
       "Hash": "ceb5c2a59ba33d42d051285a3e8a5118"
+    },
+    "posterior": {
+      "Package": "posterior",
+      "Version": "1.6.0.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/posterior",
+      "RemoteSha": "797ab206642a4f9b6183037b56c16cb708230ab4",
+      "Requirements": [
+        "R",
+        "abind",
+        "checkmate",
+        "distributional",
+        "matrixStats",
+        "methods",
+        "parallel",
+        "pillar",
+        "rlang",
+        "stats",
+        "tensorA",
+        "tibble",
+        "vctrs"
+      ],
+      "Hash": "4bcd71a249bb520150ba9b657d2c677c"
     },
     "prettyunits": {
       "Package": "prettyunits",
@@ -2159,6 +2512,49 @@
       ],
       "Hash": "4c8415e0ec1e29f3f4f6fc108bef0144"
     },
+    "rstan": {
+      "Package": "rstan",
+      "Version": "2.36.0.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/rstan",
+      "RemoteRef": "develop",
+      "RemoteSha": "2c72f4fca72cc1c404fed2dd58cea93438385c5f",
+      "RemoteSubdir": "rstan/rstan",
+      "Requirements": [
+        "BH",
+        "QuickJSR",
+        "R",
+        "Rcpp",
+        "RcppEigen",
+        "RcppParallel",
+        "StanHeaders",
+        "ggplot2",
+        "gridExtra",
+        "inline",
+        "loo",
+        "methods",
+        "pkgbuild",
+        "stats4"
+      ],
+      "Hash": "ed6bee51402058a60dfd23d9a7083669"
+    },
+    "rstantools": {
+      "Package": "rstantools",
+      "Version": "2.4.0.9000",
+      "Source": "Repository",
+      "Repository": "https://stan-dev.r-universe.dev",
+      "RemoteUrl": "https://github.com/stan-dev/rstantools",
+      "RemoteSha": "99c0d66ae6a78aa10fd16529b0f63c3f3f83e3db",
+      "Requirements": [
+        "Rcpp",
+        "RcppParallel",
+        "desc",
+        "stats",
+        "utils"
+      ],
+      "Hash": "803984a0ed20ae2284c219e26c2244ae"
+    },
     "rstatix": {
       "Package": "rstatix",
       "Version": "0.7.2",
@@ -2336,6 +2732,17 @@
         "utils"
       ],
       "Hash": "f8b2924480a2679e2bad9750646112fe"
+    },
+    "tensorA": {
+      "Package": "tensorA",
+      "Version": "0.36.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats"
+      ],
+      "Hash": "0d587599172f2ffda2c09cb6b854e0e5"
     },
     "textshaping": {
       "Package": "textshaping",
