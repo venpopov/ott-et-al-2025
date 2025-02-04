@@ -1,0 +1,1216 @@
+id,item_type,source,resp,n
+101,distractor,N,A,1
+101,distractor,N,B,0
+101,distractor,N,N,79
+101,F item,A,A,1
+101,F item,A,B,2
+101,F item,A,N,17
+101,F item,B,A,1
+101,F item,B,B,4
+101,F item,B,N,15
+101,R item,A,A,6
+101,R item,A,B,2
+101,R item,A,N,12
+101,R item,B,A,4
+101,R item,B,B,4
+101,R item,B,N,12
+102,distractor,N,A,18
+102,distractor,N,B,13
+102,distractor,N,N,49
+102,F item,A,A,8
+102,F item,A,B,5
+102,F item,A,N,7
+102,F item,B,A,8
+102,F item,B,B,8
+102,F item,B,N,4
+102,R item,A,A,7
+102,R item,A,B,4
+102,R item,A,N,9
+102,R item,B,A,6
+102,R item,B,B,8
+102,R item,B,N,6
+103,distractor,N,A,16
+103,distractor,N,B,9
+103,distractor,N,N,55
+103,F item,A,A,10
+103,F item,A,B,8
+103,F item,A,N,2
+103,F item,B,A,7
+103,F item,B,B,9
+103,F item,B,N,4
+103,R item,A,A,8
+103,R item,A,B,11
+103,R item,A,N,1
+103,R item,B,A,9
+103,R item,B,B,11
+103,R item,B,N,0
+104,distractor,N,A,5
+104,distractor,N,B,2
+104,distractor,N,N,73
+104,F item,A,A,3
+104,F item,A,B,4
+104,F item,A,N,13
+104,F item,B,A,0
+104,F item,B,B,4
+104,F item,B,N,16
+104,R item,A,A,9
+104,R item,A,B,6
+104,R item,A,N,5
+104,R item,B,A,4
+104,R item,B,B,10
+104,R item,B,N,6
+105,distractor,N,A,0
+105,distractor,N,B,1
+105,distractor,N,N,79
+105,F item,A,A,7
+105,F item,A,B,2
+105,F item,A,N,11
+105,F item,B,A,1
+105,F item,B,B,6
+105,F item,B,N,13
+105,R item,A,A,11
+105,R item,A,B,1
+105,R item,A,N,8
+105,R item,B,A,8
+105,R item,B,B,5
+105,R item,B,N,7
+106,distractor,N,A,0
+106,distractor,N,B,0
+106,distractor,N,N,80
+106,F item,A,A,1
+106,F item,A,B,0
+106,F item,A,N,19
+106,F item,B,A,1
+106,F item,B,B,0
+106,F item,B,N,19
+106,R item,A,A,11
+106,R item,A,B,4
+106,R item,A,N,5
+106,R item,B,A,5
+106,R item,B,B,7
+106,R item,B,N,8
+107,distractor,N,A,0
+107,distractor,N,B,2
+107,distractor,N,N,78
+107,F item,A,A,2
+107,F item,A,B,5
+107,F item,A,N,13
+107,F item,B,A,2
+107,F item,B,B,4
+107,F item,B,N,14
+107,R item,A,A,8
+107,R item,A,B,11
+107,R item,A,N,1
+107,R item,B,A,5
+107,R item,B,B,5
+107,R item,B,N,10
+108,distractor,N,A,0
+108,distractor,N,B,3
+108,distractor,N,N,77
+108,F item,A,A,8
+108,F item,A,B,1
+108,F item,A,N,11
+108,F item,B,A,2
+108,F item,B,B,8
+108,F item,B,N,10
+108,R item,A,A,13
+108,R item,A,B,7
+108,R item,A,N,0
+108,R item,B,A,10
+108,R item,B,B,8
+108,R item,B,N,2
+109,distractor,N,A,8
+109,distractor,N,B,5
+109,distractor,N,N,67
+109,F item,A,A,8
+109,F item,A,B,4
+109,F item,A,N,8
+109,F item,B,A,5
+109,F item,B,B,8
+109,F item,B,N,7
+109,R item,A,A,15
+109,R item,A,B,5
+109,R item,A,N,0
+109,R item,B,A,6
+109,R item,B,B,13
+109,R item,B,N,1
+110,distractor,N,A,0
+110,distractor,N,B,0
+110,distractor,N,N,80
+110,F item,A,A,0
+110,F item,A,B,0
+110,F item,A,N,20
+110,F item,B,A,0
+110,F item,B,B,0
+110,F item,B,N,20
+110,R item,A,A,13
+110,R item,A,B,5
+110,R item,A,N,2
+110,R item,B,A,2
+110,R item,B,B,16
+110,R item,B,N,2
+111,distractor,N,A,1
+111,distractor,N,B,2
+111,distractor,N,N,77
+111,F item,A,A,10
+111,F item,A,B,0
+111,F item,A,N,10
+111,F item,B,A,3
+111,F item,B,B,12
+111,F item,B,N,5
+111,R item,A,A,15
+111,R item,A,B,3
+111,R item,A,N,2
+111,R item,B,A,2
+111,R item,B,B,14
+111,R item,B,N,4
+112,distractor,N,A,12
+112,distractor,N,B,1
+112,distractor,N,N,67
+112,F item,A,A,8
+112,F item,A,B,1
+112,F item,A,N,11
+112,F item,B,A,4
+112,F item,B,B,2
+112,F item,B,N,14
+112,R item,A,A,9
+112,R item,A,B,8
+112,R item,A,N,3
+112,R item,B,A,5
+112,R item,B,B,14
+112,R item,B,N,1
+113,distractor,N,A,12
+113,distractor,N,B,9
+113,distractor,N,N,59
+113,F item,A,A,6
+113,F item,A,B,1
+113,F item,A,N,13
+113,F item,B,A,4
+113,F item,B,B,6
+113,F item,B,N,10
+113,R item,A,A,10
+113,R item,A,B,7
+113,R item,A,N,3
+113,R item,B,A,2
+113,R item,B,B,11
+113,R item,B,N,7
+114,distractor,N,A,6
+114,distractor,N,B,5
+114,distractor,N,N,69
+114,F item,A,A,7
+114,F item,A,B,2
+114,F item,A,N,11
+114,F item,B,A,7
+114,F item,B,B,9
+114,F item,B,N,4
+114,R item,A,A,10
+114,R item,A,B,9
+114,R item,A,N,1
+114,R item,B,A,6
+114,R item,B,B,10
+114,R item,B,N,4
+115,distractor,N,A,0
+115,distractor,N,B,0
+115,distractor,N,N,80
+115,F item,A,A,4
+115,F item,A,B,0
+115,F item,A,N,16
+115,F item,B,A,2
+115,F item,B,B,2
+115,F item,B,N,16
+115,R item,A,A,5
+115,R item,A,B,7
+115,R item,A,N,8
+115,R item,B,A,2
+115,R item,B,B,11
+115,R item,B,N,7
+116,distractor,N,A,8
+116,distractor,N,B,6
+116,distractor,N,N,66
+116,F item,A,A,6
+116,F item,A,B,3
+116,F item,A,N,11
+116,F item,B,A,5
+116,F item,B,B,9
+116,F item,B,N,6
+116,R item,A,A,11
+116,R item,A,B,5
+116,R item,A,N,4
+116,R item,B,A,8
+116,R item,B,B,6
+116,R item,B,N,6
+117,distractor,N,A,1
+117,distractor,N,B,0
+117,distractor,N,N,79
+117,F item,A,A,9
+117,F item,A,B,0
+117,F item,A,N,11
+117,F item,B,A,0
+117,F item,B,B,12
+117,F item,B,N,8
+117,R item,A,A,12
+117,R item,A,B,2
+117,R item,A,N,6
+117,R item,B,A,1
+117,R item,B,B,13
+117,R item,B,N,6
+118,distractor,N,A,2
+118,distractor,N,B,3
+118,distractor,N,N,75
+118,F item,A,A,1
+118,F item,A,B,0
+118,F item,A,N,19
+118,F item,B,A,2
+118,F item,B,B,2
+118,F item,B,N,16
+118,R item,A,A,2
+118,R item,A,B,4
+118,R item,A,N,14
+118,R item,B,A,8
+118,R item,B,B,3
+118,R item,B,N,9
+119,distractor,N,A,2
+119,distractor,N,B,2
+119,distractor,N,N,76
+119,F item,A,A,9
+119,F item,A,B,2
+119,F item,A,N,9
+119,F item,B,A,1
+119,F item,B,B,5
+119,F item,B,N,14
+119,R item,A,A,10
+119,R item,A,B,2
+119,R item,A,N,8
+119,R item,B,A,6
+119,R item,B,B,12
+119,R item,B,N,2
+120,distractor,N,A,2
+120,distractor,N,B,3
+120,distractor,N,N,75
+120,F item,A,A,7
+120,F item,A,B,2
+120,F item,A,N,11
+120,F item,B,A,2
+120,F item,B,B,5
+120,F item,B,N,13
+120,R item,A,A,8
+120,R item,A,B,0
+120,R item,A,N,12
+120,R item,B,A,0
+120,R item,B,B,8
+120,R item,B,N,12
+121,distractor,N,A,4
+121,distractor,N,B,3
+121,distractor,N,N,73
+121,F item,A,A,2
+121,F item,A,B,3
+121,F item,A,N,15
+121,F item,B,A,2
+121,F item,B,B,5
+121,F item,B,N,13
+121,R item,A,A,10
+121,R item,A,B,3
+121,R item,A,N,7
+121,R item,B,A,1
+121,R item,B,B,13
+121,R item,B,N,6
+122,distractor,N,A,5
+122,distractor,N,B,3
+122,distractor,N,N,72
+122,F item,A,A,3
+122,F item,A,B,6
+122,F item,A,N,11
+122,F item,B,A,2
+122,F item,B,B,5
+122,F item,B,N,13
+122,R item,A,A,7
+122,R item,A,B,4
+122,R item,A,N,9
+122,R item,B,A,2
+122,R item,B,B,7
+122,R item,B,N,11
+123,distractor,N,A,1
+123,distractor,N,B,1
+123,distractor,N,N,78
+123,F item,A,A,5
+123,F item,A,B,4
+123,F item,A,N,11
+123,F item,B,A,1
+123,F item,B,B,7
+123,F item,B,N,12
+123,R item,A,A,12
+123,R item,A,B,5
+123,R item,A,N,3
+123,R item,B,A,6
+123,R item,B,B,7
+123,R item,B,N,7
+124,distractor,N,A,6
+124,distractor,N,B,13
+124,distractor,N,N,61
+124,F item,A,A,9
+124,F item,A,B,6
+124,F item,A,N,5
+124,F item,B,A,2
+124,F item,B,B,7
+124,F item,B,N,11
+124,R item,A,A,12
+124,R item,A,B,5
+124,R item,A,N,3
+124,R item,B,A,5
+124,R item,B,B,12
+124,R item,B,N,3
+125,distractor,N,A,7
+125,distractor,N,B,3
+125,distractor,N,N,70
+125,F item,A,A,7
+125,F item,A,B,3
+125,F item,A,N,10
+125,F item,B,A,3
+125,F item,B,B,6
+125,F item,B,N,11
+125,R item,A,A,14
+125,R item,A,B,6
+125,R item,A,N,0
+125,R item,B,A,2
+125,R item,B,B,18
+125,R item,B,N,0
+126,distractor,N,A,4
+126,distractor,N,B,2
+126,distractor,N,N,74
+126,F item,A,A,6
+126,F item,A,B,2
+126,F item,A,N,12
+126,F item,B,A,4
+126,F item,B,B,5
+126,F item,B,N,11
+126,R item,A,A,7
+126,R item,A,B,10
+126,R item,A,N,3
+126,R item,B,A,3
+126,R item,B,B,13
+126,R item,B,N,4
+127,distractor,N,A,4
+127,distractor,N,B,2
+127,distractor,N,N,74
+127,F item,A,A,2
+127,F item,A,B,7
+127,F item,A,N,11
+127,F item,B,A,6
+127,F item,B,B,7
+127,F item,B,N,7
+127,R item,A,A,8
+127,R item,A,B,9
+127,R item,A,N,3
+127,R item,B,A,6
+127,R item,B,B,9
+127,R item,B,N,5
+128,distractor,N,A,12
+128,distractor,N,B,16
+128,distractor,N,N,52
+128,F item,A,A,12
+128,F item,A,B,3
+128,F item,A,N,5
+128,F item,B,A,5
+128,F item,B,B,9
+128,F item,B,N,6
+128,R item,A,A,9
+128,R item,A,B,6
+128,R item,A,N,5
+128,R item,B,A,7
+128,R item,B,B,10
+128,R item,B,N,3
+129,distractor,N,A,1
+129,distractor,N,B,2
+129,distractor,N,N,77
+129,F item,A,A,10
+129,F item,A,B,3
+129,F item,A,N,7
+129,F item,B,A,3
+129,F item,B,B,8
+129,F item,B,N,9
+129,R item,A,A,8
+129,R item,A,B,10
+129,R item,A,N,2
+129,R item,B,A,3
+129,R item,B,B,17
+129,R item,B,N,0
+130,distractor,N,A,3
+130,distractor,N,B,5
+130,distractor,N,N,72
+130,F item,A,A,8
+130,F item,A,B,3
+130,F item,A,N,9
+130,F item,B,A,6
+130,F item,B,B,11
+130,F item,B,N,3
+130,R item,A,A,7
+130,R item,A,B,9
+130,R item,A,N,4
+130,R item,B,A,4
+130,R item,B,B,12
+130,R item,B,N,4
+131,distractor,N,A,7
+131,distractor,N,B,10
+131,distractor,N,N,63
+131,F item,A,A,9
+131,F item,A,B,7
+131,F item,A,N,4
+131,F item,B,A,2
+131,F item,B,B,12
+131,F item,B,N,6
+131,R item,A,A,10
+131,R item,A,B,8
+131,R item,A,N,2
+131,R item,B,A,6
+131,R item,B,B,12
+131,R item,B,N,2
+132,distractor,N,A,0
+132,distractor,N,B,1
+132,distractor,N,N,79
+132,F item,A,A,9
+132,F item,A,B,5
+132,F item,A,N,6
+132,F item,B,A,4
+132,F item,B,B,10
+132,F item,B,N,6
+132,R item,A,A,13
+132,R item,A,B,3
+132,R item,A,N,4
+132,R item,B,A,7
+132,R item,B,B,13
+132,R item,B,N,0
+133,distractor,N,A,10
+133,distractor,N,B,5
+133,distractor,N,N,65
+133,F item,A,A,5
+133,F item,A,B,3
+133,F item,A,N,12
+133,F item,B,A,7
+133,F item,B,B,6
+133,F item,B,N,7
+133,R item,A,A,10
+133,R item,A,B,6
+133,R item,A,N,4
+133,R item,B,A,7
+133,R item,B,B,7
+133,R item,B,N,6
+134,distractor,N,A,13
+134,distractor,N,B,4
+134,distractor,N,N,63
+134,F item,A,A,4
+134,F item,A,B,4
+134,F item,A,N,12
+134,F item,B,A,4
+134,F item,B,B,4
+134,F item,B,N,12
+134,R item,A,A,10
+134,R item,A,B,5
+134,R item,A,N,5
+134,R item,B,A,2
+134,R item,B,B,14
+134,R item,B,N,4
+135,distractor,N,A,1
+135,distractor,N,B,1
+135,distractor,N,N,78
+135,F item,A,A,10
+135,F item,A,B,4
+135,F item,A,N,6
+135,F item,B,A,2
+135,F item,B,B,15
+135,F item,B,N,3
+135,R item,A,A,11
+135,R item,A,B,9
+135,R item,A,N,0
+135,R item,B,A,1
+135,R item,B,B,19
+135,R item,B,N,0
+136,distractor,N,A,0
+136,distractor,N,B,1
+136,distractor,N,N,79
+136,F item,A,A,20
+136,F item,A,B,0
+136,F item,A,N,0
+136,F item,B,A,2
+136,F item,B,B,16
+136,F item,B,N,2
+136,R item,A,A,18
+136,R item,A,B,2
+136,R item,A,N,0
+136,R item,B,A,1
+136,R item,B,B,19
+136,R item,B,N,0
+137,distractor,N,A,4
+137,distractor,N,B,3
+137,distractor,N,N,73
+137,F item,A,A,4
+137,F item,A,B,3
+137,F item,A,N,13
+137,F item,B,A,5
+137,F item,B,B,4
+137,F item,B,N,11
+137,R item,A,A,13
+137,R item,A,B,4
+137,R item,A,N,3
+137,R item,B,A,10
+137,R item,B,B,5
+137,R item,B,N,5
+138,distractor,N,A,2
+138,distractor,N,B,3
+138,distractor,N,N,75
+138,F item,A,A,3
+138,F item,A,B,2
+138,F item,A,N,15
+138,F item,B,A,3
+138,F item,B,B,7
+138,F item,B,N,10
+138,R item,A,A,11
+138,R item,A,B,6
+138,R item,A,N,3
+138,R item,B,A,6
+138,R item,B,B,8
+138,R item,B,N,6
+139,distractor,N,A,1
+139,distractor,N,B,2
+139,distractor,N,N,77
+139,F item,A,A,17
+139,F item,A,B,0
+139,F item,A,N,3
+139,F item,B,A,2
+139,F item,B,B,12
+139,F item,B,N,6
+139,R item,A,A,14
+139,R item,A,B,4
+139,R item,A,N,2
+139,R item,B,A,2
+139,R item,B,B,18
+139,R item,B,N,0
+140,distractor,N,A,0
+140,distractor,N,B,0
+140,distractor,N,N,80
+140,F item,A,A,0
+140,F item,A,B,0
+140,F item,A,N,20
+140,F item,B,A,0
+140,F item,B,B,0
+140,F item,B,N,20
+140,R item,A,A,11
+140,R item,A,B,6
+140,R item,A,N,3
+140,R item,B,A,5
+140,R item,B,B,12
+140,R item,B,N,3
+141,distractor,N,A,0
+141,distractor,N,B,1
+141,distractor,N,N,79
+141,F item,A,A,5
+141,F item,A,B,2
+141,F item,A,N,13
+141,F item,B,A,1
+141,F item,B,B,7
+141,F item,B,N,12
+141,R item,A,A,12
+141,R item,A,B,7
+141,R item,A,N,1
+141,R item,B,A,5
+141,R item,B,B,15
+141,R item,B,N,0
+142,distractor,N,A,2
+142,distractor,N,B,3
+142,distractor,N,N,75
+142,F item,A,A,4
+142,F item,A,B,1
+142,F item,A,N,15
+142,F item,B,A,1
+142,F item,B,B,3
+142,F item,B,N,16
+142,R item,A,A,11
+142,R item,A,B,6
+142,R item,A,N,3
+142,R item,B,A,6
+142,R item,B,B,10
+142,R item,B,N,4
+143,distractor,N,A,15
+143,distractor,N,B,33
+143,distractor,N,N,32
+143,F item,A,A,5
+143,F item,A,B,8
+143,F item,A,N,7
+143,F item,B,A,7
+143,F item,B,B,6
+143,F item,B,N,7
+143,R item,A,A,11
+143,R item,A,B,6
+143,R item,A,N,3
+143,R item,B,A,10
+143,R item,B,B,5
+143,R item,B,N,5
+144,distractor,N,A,1
+144,distractor,N,B,2
+144,distractor,N,N,77
+144,F item,A,A,2
+144,F item,A,B,5
+144,F item,A,N,13
+144,F item,B,A,1
+144,F item,B,B,6
+144,F item,B,N,13
+144,R item,A,A,4
+144,R item,A,B,7
+144,R item,A,N,9
+144,R item,B,A,7
+144,R item,B,B,10
+144,R item,B,N,3
+145,distractor,N,A,2
+145,distractor,N,B,7
+145,distractor,N,N,71
+145,F item,A,A,5
+145,F item,A,B,1
+145,F item,A,N,14
+145,F item,B,A,1
+145,F item,B,B,3
+145,F item,B,N,16
+145,R item,A,A,11
+145,R item,A,B,8
+145,R item,A,N,1
+145,R item,B,A,5
+145,R item,B,B,12
+145,R item,B,N,3
+146,distractor,N,A,3
+146,distractor,N,B,4
+146,distractor,N,N,73
+146,F item,A,A,5
+146,F item,A,B,5
+146,F item,A,N,10
+146,F item,B,A,11
+146,F item,B,B,4
+146,F item,B,N,5
+146,R item,A,A,12
+146,R item,A,B,8
+146,R item,A,N,0
+146,R item,B,A,7
+146,R item,B,B,12
+146,R item,B,N,1
+147,distractor,N,A,0
+147,distractor,N,B,4
+147,distractor,N,N,76
+147,F item,A,A,8
+147,F item,A,B,2
+147,F item,A,N,10
+147,F item,B,A,1
+147,F item,B,B,14
+147,F item,B,N,5
+147,R item,A,A,10
+147,R item,A,B,4
+147,R item,A,N,6
+147,R item,B,A,2
+147,R item,B,B,16
+147,R item,B,N,2
+148,distractor,N,A,7
+148,distractor,N,B,5
+148,distractor,N,N,68
+148,F item,A,A,10
+148,F item,A,B,6
+148,F item,A,N,4
+148,F item,B,A,2
+148,F item,B,B,15
+148,F item,B,N,3
+148,R item,A,A,15
+148,R item,A,B,4
+148,R item,A,N,1
+148,R item,B,A,5
+148,R item,B,B,11
+148,R item,B,N,4
+149,distractor,N,A,22
+149,distractor,N,B,15
+149,distractor,N,N,43
+149,F item,A,A,9
+149,F item,A,B,7
+149,F item,A,N,4
+149,F item,B,A,9
+149,F item,B,B,7
+149,F item,B,N,4
+149,R item,A,A,12
+149,R item,A,B,5
+149,R item,A,N,3
+149,R item,B,A,6
+149,R item,B,B,13
+149,R item,B,N,1
+150,distractor,N,A,6
+150,distractor,N,B,4
+150,distractor,N,N,70
+150,F item,A,A,5
+150,F item,A,B,5
+150,F item,A,N,10
+150,F item,B,A,4
+150,F item,B,B,10
+150,F item,B,N,6
+150,R item,A,A,12
+150,R item,A,B,5
+150,R item,A,N,3
+150,R item,B,A,4
+150,R item,B,B,13
+150,R item,B,N,3
+151,distractor,N,A,10
+151,distractor,N,B,10
+151,distractor,N,N,60
+151,F item,A,A,6
+151,F item,A,B,5
+151,F item,A,N,9
+151,F item,B,A,6
+151,F item,B,B,6
+151,F item,B,N,8
+151,R item,A,A,9
+151,R item,A,B,9
+151,R item,A,N,2
+151,R item,B,A,7
+151,R item,B,B,11
+151,R item,B,N,2
+152,distractor,N,A,10
+152,distractor,N,B,12
+152,distractor,N,N,58
+152,F item,A,A,7
+152,F item,A,B,2
+152,F item,A,N,11
+152,F item,B,A,5
+152,F item,B,B,3
+152,F item,B,N,12
+152,R item,A,A,7
+152,R item,A,B,3
+152,R item,A,N,10
+152,R item,B,A,2
+152,R item,B,B,7
+152,R item,B,N,11
+153,distractor,N,A,1
+153,distractor,N,B,1
+153,distractor,N,N,78
+153,F item,A,A,8
+153,F item,A,B,3
+153,F item,A,N,9
+153,F item,B,A,1
+153,F item,B,B,6
+153,F item,B,N,13
+153,R item,A,A,12
+153,R item,A,B,5
+153,R item,A,N,3
+153,R item,B,A,5
+153,R item,B,B,14
+153,R item,B,N,1
+154,distractor,N,A,1
+154,distractor,N,B,1
+154,distractor,N,N,78
+154,F item,A,A,10
+154,F item,A,B,3
+154,F item,A,N,7
+154,F item,B,A,4
+154,F item,B,B,10
+154,F item,B,N,6
+154,R item,A,A,12
+154,R item,A,B,6
+154,R item,A,N,2
+154,R item,B,A,5
+154,R item,B,B,14
+154,R item,B,N,1
+155,distractor,N,A,1
+155,distractor,N,B,0
+155,distractor,N,N,79
+155,F item,A,A,6
+155,F item,A,B,4
+155,F item,A,N,10
+155,F item,B,A,1
+155,F item,B,B,7
+155,F item,B,N,12
+155,R item,A,A,8
+155,R item,A,B,2
+155,R item,A,N,10
+155,R item,B,A,5
+155,R item,B,B,6
+155,R item,B,N,9
+156,distractor,N,A,2
+156,distractor,N,B,0
+156,distractor,N,N,78
+156,F item,A,A,6
+156,F item,A,B,3
+156,F item,A,N,11
+156,F item,B,A,1
+156,F item,B,B,10
+156,F item,B,N,9
+156,R item,A,A,13
+156,R item,A,B,7
+156,R item,A,N,0
+156,R item,B,A,8
+156,R item,B,B,11
+156,R item,B,N,1
+157,distractor,N,A,8
+157,distractor,N,B,5
+157,distractor,N,N,67
+157,F item,A,A,11
+157,F item,A,B,2
+157,F item,A,N,7
+157,F item,B,A,5
+157,F item,B,B,6
+157,F item,B,N,9
+157,R item,A,A,6
+157,R item,A,B,2
+157,R item,A,N,12
+157,R item,B,A,3
+157,R item,B,B,8
+157,R item,B,N,9
+158,distractor,N,A,2
+158,distractor,N,B,3
+158,distractor,N,N,75
+158,F item,A,A,3
+158,F item,A,B,1
+158,F item,A,N,16
+158,F item,B,A,2
+158,F item,B,B,5
+158,F item,B,N,13
+158,R item,A,A,9
+158,R item,A,B,5
+158,R item,A,N,6
+158,R item,B,A,0
+158,R item,B,B,15
+158,R item,B,N,5
+159,distractor,N,A,0
+159,distractor,N,B,0
+159,distractor,N,N,80
+159,F item,A,A,8
+159,F item,A,B,0
+159,F item,A,N,12
+159,F item,B,A,2
+159,F item,B,B,4
+159,F item,B,N,14
+159,R item,A,A,12
+159,R item,A,B,8
+159,R item,A,N,0
+159,R item,B,A,12
+159,R item,B,B,7
+159,R item,B,N,1
+160,distractor,N,A,7
+160,distractor,N,B,11
+160,distractor,N,N,62
+160,F item,A,A,11
+160,F item,A,B,3
+160,F item,A,N,6
+160,F item,B,A,7
+160,F item,B,B,9
+160,F item,B,N,4
+160,R item,A,A,8
+160,R item,A,B,8
+160,R item,A,N,4
+160,R item,B,A,5
+160,R item,B,B,11
+160,R item,B,N,4
+161,distractor,N,A,1
+161,distractor,N,B,0
+161,distractor,N,N,79
+161,F item,A,A,8
+161,F item,A,B,1
+161,F item,A,N,11
+161,F item,B,A,3
+161,F item,B,B,8
+161,F item,B,N,9
+161,R item,A,A,14
+161,R item,A,B,4
+161,R item,A,N,2
+161,R item,B,A,3
+161,R item,B,B,17
+161,R item,B,N,0
+162,distractor,N,A,1
+162,distractor,N,B,0
+162,distractor,N,N,79
+162,F item,A,A,0
+162,F item,A,B,3
+162,F item,A,N,17
+162,F item,B,A,1
+162,F item,B,B,1
+162,F item,B,N,18
+162,R item,A,A,11
+162,R item,A,B,5
+162,R item,A,N,4
+162,R item,B,A,8
+162,R item,B,B,7
+162,R item,B,N,5
+163,distractor,N,A,3
+163,distractor,N,B,2
+163,distractor,N,N,75
+163,F item,A,A,8
+163,F item,A,B,1
+163,F item,A,N,11
+163,F item,B,A,1
+163,F item,B,B,3
+163,F item,B,N,16
+163,R item,A,A,4
+163,R item,A,B,5
+163,R item,A,N,11
+163,R item,B,A,7
+163,R item,B,B,10
+163,R item,B,N,3
+164,distractor,N,A,4
+164,distractor,N,B,11
+164,distractor,N,N,65
+164,F item,A,A,7
+164,F item,A,B,7
+164,F item,A,N,6
+164,F item,B,A,0
+164,F item,B,B,13
+164,F item,B,N,7
+164,R item,A,A,15
+164,R item,A,B,5
+164,R item,A,N,0
+164,R item,B,A,7
+164,R item,B,B,11
+164,R item,B,N,2
+165,distractor,N,A,1
+165,distractor,N,B,2
+165,distractor,N,N,77
+165,F item,A,A,6
+165,F item,A,B,2
+165,F item,A,N,12
+165,F item,B,A,1
+165,F item,B,B,3
+165,F item,B,N,16
+165,R item,A,A,16
+165,R item,A,B,4
+165,R item,A,N,0
+165,R item,B,A,2
+165,R item,B,B,17
+165,R item,B,N,1
+166,distractor,N,A,8
+166,distractor,N,B,11
+166,distractor,N,N,61
+166,F item,A,A,9
+166,F item,A,B,5
+166,F item,A,N,6
+166,F item,B,A,7
+166,F item,B,B,5
+166,F item,B,N,8
+166,R item,A,A,10
+166,R item,A,B,8
+166,R item,A,N,2
+166,R item,B,A,4
+166,R item,B,B,12
+166,R item,B,N,4
+167,distractor,N,A,1
+167,distractor,N,B,0
+167,distractor,N,N,79
+167,F item,A,A,2
+167,F item,A,B,1
+167,F item,A,N,17
+167,F item,B,A,2
+167,F item,B,B,3
+167,F item,B,N,15
+167,R item,A,A,5
+167,R item,A,B,3
+167,R item,A,N,12
+167,R item,B,A,5
+167,R item,B,B,4
+167,R item,B,N,11
+168,distractor,N,A,6
+168,distractor,N,B,4
+168,distractor,N,N,70
+168,F item,A,A,6
+168,F item,A,B,4
+168,F item,A,N,10
+168,F item,B,A,3
+168,F item,B,B,6
+168,F item,B,N,11
+168,R item,A,A,14
+168,R item,A,B,4
+168,R item,A,N,2
+168,R item,B,A,5
+168,R item,B,B,15
+168,R item,B,N,0
+169,distractor,N,A,8
+169,distractor,N,B,3
+169,distractor,N,N,69
+169,F item,A,A,7
+169,F item,A,B,7
+169,F item,A,N,6
+169,F item,B,A,3
+169,F item,B,B,7
+169,F item,B,N,10
+169,R item,A,A,13
+169,R item,A,B,7
+169,R item,A,N,0
+169,R item,B,A,10
+169,R item,B,B,10
+169,R item,B,N,0
+170,distractor,N,A,2
+170,distractor,N,B,0
+170,distractor,N,N,78
+170,F item,A,A,2
+170,F item,A,B,3
+170,F item,A,N,15
+170,F item,B,A,5
+170,F item,B,B,4
+170,F item,B,N,11
+170,R item,A,A,16
+170,R item,A,B,4
+170,R item,A,N,0
+170,R item,B,A,4
+170,R item,B,B,10
+170,R item,B,N,6
+171,distractor,N,A,10
+171,distractor,N,B,11
+171,distractor,N,N,59
+171,F item,A,A,9
+171,F item,A,B,4
+171,F item,A,N,7
+171,F item,B,A,2
+171,F item,B,B,16
+171,F item,B,N,2
+171,R item,A,A,18
+171,R item,A,B,1
+171,R item,A,N,1
+171,R item,B,A,3
+171,R item,B,B,17
+171,R item,B,N,0
+172,distractor,N,A,9
+172,distractor,N,B,17
+172,distractor,N,N,54
+172,F item,A,A,2
+172,F item,A,B,7
+172,F item,A,N,11
+172,F item,B,A,4
+172,F item,B,B,5
+172,F item,B,N,11
+172,R item,A,A,6
+172,R item,A,B,9
+172,R item,A,N,5
+172,R item,B,A,7
+172,R item,B,B,4
+172,R item,B,N,9
+173,distractor,N,A,11
+173,distractor,N,B,3
+173,distractor,N,N,66
+173,F item,A,A,11
+173,F item,A,B,3
+173,F item,A,N,6
+173,F item,B,A,4
+173,F item,B,B,11
+173,F item,B,N,5
+173,R item,A,A,7
+173,R item,A,B,12
+173,R item,A,N,1
+173,R item,B,A,6
+173,R item,B,B,13
+173,R item,B,N,1
+174,distractor,N,A,1
+174,distractor,N,B,4
+174,distractor,N,N,75
+174,F item,A,A,5
+174,F item,A,B,3
+174,F item,A,N,12
+174,F item,B,A,1
+174,F item,B,B,7
+174,F item,B,N,12
+174,R item,A,A,6
+174,R item,A,B,9
+174,R item,A,N,5
+174,R item,B,A,4
+174,R item,B,B,14
+174,R item,B,N,2
+175,distractor,N,A,0
+175,distractor,N,B,1
+175,distractor,N,N,79
+175,F item,A,A,1
+175,F item,A,B,1
+175,F item,A,N,18
+175,F item,B,A,1
+175,F item,B,B,1
+175,F item,B,N,18
+175,R item,A,A,7
+175,R item,A,B,8
+175,R item,A,N,5
+175,R item,B,A,4
+175,R item,B,B,13
+175,R item,B,N,3
+176,distractor,N,A,2
+176,distractor,N,B,0
+176,distractor,N,N,78
+176,F item,A,A,6
+176,F item,A,B,4
+176,F item,A,N,10
+176,F item,B,A,4
+176,F item,B,B,9
+176,F item,B,N,7
+176,R item,A,A,13
+176,R item,A,B,5
+176,R item,A,N,2
+176,R item,B,A,6
+176,R item,B,B,12
+176,R item,B,N,2
+177,distractor,N,A,5
+177,distractor,N,B,6
+177,distractor,N,N,69
+177,F item,A,A,5
+177,F item,A,B,2
+177,F item,A,N,13
+177,F item,B,A,2
+177,F item,B,B,5
+177,F item,B,N,13
+177,R item,A,A,7
+177,R item,A,B,5
+177,R item,A,N,8
+177,R item,B,A,5
+177,R item,B,B,12
+177,R item,B,N,3
+178,distractor,N,A,0
+178,distractor,N,B,1
+178,distractor,N,N,79
+178,F item,A,A,5
+178,F item,A,B,5
+178,F item,A,N,10
+178,F item,B,A,1
+178,F item,B,B,9
+178,F item,B,N,10
+178,R item,A,A,13
+178,R item,A,B,1
+178,R item,A,N,6
+178,R item,B,A,4
+178,R item,B,B,8
+178,R item,B,N,8
+179,distractor,N,A,3
+179,distractor,N,B,7
+179,distractor,N,N,70
+179,F item,A,A,7
+179,F item,A,B,5
+179,F item,A,N,8
+179,F item,B,A,5
+179,F item,B,B,8
+179,F item,B,N,7
+179,R item,A,A,10
+179,R item,A,B,8
+179,R item,A,N,2
+179,R item,B,A,6
+179,R item,B,B,11
+179,R item,B,N,3
+180,distractor,N,A,1
+180,distractor,N,B,1
+180,distractor,N,N,78
+180,F item,A,A,6
+180,F item,A,B,1
+180,F item,A,N,13
+180,F item,B,A,0
+180,F item,B,B,4
+180,F item,B,N,16
+180,R item,A,A,15
+180,R item,A,B,3
+180,R item,A,N,2
+180,R item,B,A,3
+180,R item,B,B,12
+180,R item,B,N,5
+181,distractor,N,A,0
+181,distractor,N,B,1
+181,distractor,N,N,79
+181,F item,A,A,5
+181,F item,A,B,1
+181,F item,A,N,14
+181,F item,B,A,1
+181,F item,B,B,3
+181,F item,B,N,16
+181,R item,A,A,4
+181,R item,A,B,4
+181,R item,A,N,12
+181,R item,B,A,2
+181,R item,B,B,10
+181,R item,B,N,8
