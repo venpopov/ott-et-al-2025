@@ -13,7 +13,7 @@ library(psych)
 
 # Create two dataframes - one for trial data and one for demographics ----------
 
-l_all_datafiles <- list.files(path = "./E3_raw", # specify path to raw data
+l_all_datafiles <- list.files(path = "data/E3_raw", # specify path to raw data
                               recursive = TRUE,
                               pattern = "\\.txt$", 
                               full.names = TRUE)
@@ -142,5 +142,5 @@ df = df %>% relocate(assign, .after = moni_response)
 
 # Export -----------------------------------------------------------------------
 
-write.csv(df, "./E3_data.csv", row.names = FALSE)
+write.csv(df, "data/E3_data.csv", row.names = FALSE)
 

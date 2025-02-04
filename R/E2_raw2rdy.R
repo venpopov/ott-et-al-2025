@@ -15,7 +15,7 @@ library(psych)
 # import individual txt-files as a whole dataframe
 ###########################################################################################
 
-l_all_datafiles <- list.files(path = "./E2_raw", recursive = TRUE, # specify path to raw data
+l_all_datafiles <- list.files(path = "data-raw/E2_raw", recursive = TRUE, # specify path to raw data
                           pattern = "\\.txt$", 
                           full.names = TRUE)
 
@@ -92,5 +92,5 @@ View(df)
 # export DF
 ###########################################################################################
 
-write.csv(df, "./E2_data.csv", row.names = FALSE)
+write.csv(df, "data/E2_data.csv", row.names = FALSE)
 

@@ -31,7 +31,7 @@ library(jmv)
 # importing the data from Experiment 2: Locations top vs. bottom
 ###########################################################################################
 
-df <- read_csv("E2_data.csv")
+df <- read_csv("data/E2_data.csv")
 df = df %>% arrange(-desc(id))
 
 #
@@ -507,4 +507,4 @@ View(strat_usage)
 # only export those participants who stated they used a strategy
 strat_description = pp_df %>% filter(strategy1 == 1) %>% select(id,strategy2)
 
-write.csv(strat_description, "./E2_strats.csv", row.names = FALSE)
+write.csv(strat_description, "data/E2_strats.csv", row.names = FALSE)

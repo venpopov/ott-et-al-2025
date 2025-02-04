@@ -49,7 +49,7 @@ library(jmv)
 # importing data from Experiment 1
 ###########################################################################################
 
-df <- read_csv("E1_data.csv")
+df <- read_csv("data/E1_data.csv")
 df = df %>% rename(age = Age, trial_no = Trial, id = Subject, gender = Sex) %>%
   mutate(PresCon = Gruppe) %>%
   mutate(PresCon = if_else(PresCon == "IN", "intrinsic", "extrinsic"))

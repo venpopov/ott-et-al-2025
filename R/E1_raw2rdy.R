@@ -4,7 +4,7 @@
 library(tidyverse)
 library(readxl)
 
-df <- read_excel("E1_raw.xlsx")
+df <- read_excel("data-raw/E1_raw.xlsx")
 
 # cleaning up a lot
 # note: i created a superfluous dataframe "rdf" for "clean dataframe"
@@ -99,4 +99,4 @@ rdf = rdf %>% relocate(assign, .after = ori_assign)
 
 
 # export
-write.csv(rdf, "./E1_data.csv", row.names = FALSE)
+write.csv(rdf, "data/E1_data.csv", row.names = FALSE)

@@ -42,7 +42,7 @@ library(jmv)
 
 ### Load dataframe ---------------------------------------------------------------
 
-df <- read_csv("E3_data.csv")
+df <- read_csv("data/E3_data.csv")
 
 
 #
@@ -467,4 +467,4 @@ strat_description = pp_df %>% filter(strategy1 != 0) %>% select(id, strategy2)
 nrow(strat_description) / 81  # used a strat
 
 
-write.csv(strat_description, "./E3_strats.csv", row.names = FALSE)
+write.csv(strat_description, "data/E3_strats.csv", row.names = FALSE)
