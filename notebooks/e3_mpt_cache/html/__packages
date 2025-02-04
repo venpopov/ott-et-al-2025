@@ -6,3 +6,5 @@ MPTinR
 Rcpp
 brms
 cmdstanr
+StanHeaders
+rstan

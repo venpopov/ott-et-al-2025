@@ -9,7 +9,7 @@ execute:
 ```{r setup}
 #| include: false
 knitr::opts_knit$set(root.dir = here::here())
-options(tidyverse.quiet = TRUE, readr.show_col_types = FALSE)
+options(tidyverse.quiet = TRUE, readr.show_col_types = FALSE, mc.cores = 4, brms.backend = "cmdstanr")
 ```
 
 ```{r}
@@ -68,12 +68,12 @@ D_R * (1-d_RB) * a + (1-D_R) * b * g
 D_R * (1-d_RB) * (1-a) + (1-D_R) * b * (1-g) + D_R * d_RB
 (1-D_R) * (1-b)
 
-# Responses to R Items from Source A (order: Source A, Source B and New)
+# Responses to F Items from Source A (order: Source A, Source B and New)
 D_F * (1-d_FA) * a + (1-D_F) * b * g + D_F * d_FA
 D_F * (1-d_FA) * (1-a) + (1-D_F) * b * (1-g)
 (1-D_F) * (1-b)
 
-# Responses to R Items from Source B (order: Source A, Source B and New)
+# Responses to F Items from Source B (order: Source A, Source B and New)
 D_F * (1-d_FB) * a + (1-D_F) * b * g
 D_F * (1-d_FB) * (1-a) + (1-D_F) * b * (1-g) + D_F * d_FB
 (1-D_F) * (1-b)
@@ -118,6 +118,7 @@ data <- data |>
     item_type == "distractor" ~ "D"
   )) |> 
   arrange(id, desc(item_type), source, resp)
+data[data$item_type == "D",]$item_type <- "N"
 head(data, 15)
 ```
 
@@ -161,6 +162,7 @@ mpt_fit$model.info$aggregated
 And the parameter estimates:
 
 ```{r}
+#| label: mpt-aggregated-parameter-estimates
 agg_est <- mpt_fit$parameters$aggregated
 par_order <- c("a", "b", "g", "D_R", "D_F", "d_RA", "d_FA")
 idx <- match(par_order, rownames(agg_est))
@@ -168,3 +170,183 @@ print(agg_est[idx,], digits = 3)
 ```
 
 Thankfully that matches exactly the results from the paper, so I know I didn't mess up anything in the data transformation.
+
+## Fit authors' MPT model with BRMS: Attemp 1
+
+As I documented in a [GitHub issue](https://github.com/venpopov/bmm/issues/255) for `bmm`, it is possible to estimate MPT models in brms with a multinomial family and some clever hacks of the brms formula syntax. In the linked issue, I did it only for a simple two-high-threshold model of an old/new recognition task. Let's see if I can find a way to use the same approach here.
+
+For the brms approach, we need the data in long-format, but with each response-type in a separate column. 
+
+```{r}
+#| label: data_brms
+(data_brms <- data |> 
+  pivot_wider(names_from = c("resp"), values_from = c("n")) |> 
+  mutate(total = A + B + N))
+```
+
+We need dummy variables for each of the five trees:
+
+```{r}
+(data_brms <- data_brms |> 
+  mutate(
+    tree1 = as.numeric(item_type == "R" & source == "A"),
+    tree2 = as.numeric(item_type == "R" & source == "B"),
+    tree3 = as.numeric(item_type == "F" & source == "A"),
+    tree4 = as.numeric(item_type == "F" & source == "B"),
+    tree5 = as.numeric(item_type == "N")
+  ))
+```
+
+With the help of the dummy variables we can construct one formula for each of the three response types. We use these dummy variables to "turn on/off" different parts of the formula.
+
+There are many different ways to construct the formulas. In this one we skip the parameter indices, and we will let parameters vary by condition. When we do that we observe a lot of duplication we could reduce, but let's keep it explicit for now.
+
+```{r}
+#| label: mpt_base_formula
+# package the responses as a matrix
+data_brms$y <- with(data_brms, cbind(A, B, N))
+mpt_base_formula <- bf(y | trials(total) ~ 1, nl = TRUE)
+mpt_mus_formulas <- list(
+  nlf(
+    muA ~ logit(
+      tree1 * (D*(1-d)*a + (1-D)*b*g + D*d) + 
+      tree2 * (D*(1-d)*a + (1-D)*b*g) + 
+      tree3 * (D*(1-d)*a + (1-D)*b*g + D*d) + 
+      tree4 * (D*(1-d)*a + (1-D)*b*g) + 
+      tree5 * ((1-D)*b*g)
+    )
+  ),
+  nlf(
+    muB ~ logit(
+      tree1 * (D*(1-d)*(1-a) + (1-D)*b*(1-g)) +
+      tree2 * (D*(1-d)*(1-a) + (1-D)*b*(1-g) + D*d) +
+      tree3 * (D*(1-d)*(1-a) + (1-D)*b*(1-g)) +
+      tree4 * (D*(1-d)*(1-a) + (1-D)*b*(1-g) + D*d) +
+      tree5 * ((1-D)*b*(1-g))
+    )
+  ),
+  nlf(
+    muN ~ logit(
+      tree1 * ((1-D)*(1-b)) +
+      tree2 * ((1-D)*(1-b)) +
+      tree3 * ((1-D)*(1-b)) +
+      tree4 * ((1-D)*(1-b)) +
+      tree5 * ((1-D)*(1-b) + D)
+    )
+  )
+) 
+```
+
+We wrap each formula in logit(), because the multinomial family expect an unbound predictor. The parameters should also be sample on a logit scale, so we need to add some transformations:
+
+```{r}
+#| label: mpt_par_formulas
+mpt_par_formulas <- list(
+  nlf(D ~ inv_logit(lD)),
+  nlf(d ~ inv_logit(ld)),
+  nlf(a ~ inv_logit(la)),
+  nlf(b ~ inv_logit(lb)),
+  nlf(g ~ inv_logit(lg))
+)
+```
+
+and finally our actual predictor formulas. We let D vary by item_type (although the source made D_R == D_N, we can't do it with this coding - will do later). First, ignore random effects for a sanity check:
+
+```{r}
+#| label: mpt_pred_formulas
+mpt_pred_formulas <- list(
+  lf(lD ~ 0 + item_type),
+  lf(ld ~ 0 + item_type),
+  lf(la ~ 1),
+  lf(lb ~ 1),
+  lf(lg ~ 1)
+)
+```
+
+I immediately notice a problem. We want ld to vary by item_type, but that parameter doesn't matter for new items, so sampling it will not influence the likelihood. That might cause sampling problems. One solution is to try to fix it via a prior. Tricky... the other is to make the parameters again explicit. Let's see how it goes as it is.
+
+We combine all the formulas together:
+
+```{r}
+#| label: mpt_form1
+(mpt_form1 <- Reduce(`+`, c(mpt_mus_formulas, mpt_par_formulas, mpt_pred_formulas), init = mpt_base_formula))
+```
+
+We put logistic priors on all the relevant parameters (uniform on the probability scale):
+
+```{r}
+#| label: mpt_prior1
+mpt_prior1 <- 
+  prior("logistic(0, 1)", nlpar = "lD", class = "b") +
+  prior("logistic(0, 1)", nlpar = "ld", class = "b") +
+  prior("logistic(0, 1)", nlpar = "la", class = "b") +
+  prior("logistic(0, 1)", nlpar = "lb", class = "b") +
+  prior("logistic(0, 1)", nlpar = "lg", class = "b")
+```
+
+and now we are ready to try fitting this:
+
+```{r}
+#| label: fit_mpt_brm1
+#| cache: true
+fit_mpt_brm1 <- brm(
+  mpt_form1, 
+  data = data_brms, 
+  family = multinomial(refcat = NA),
+  prior = mpt_prior1
+)
+```
+
+No scary convergence messages, though Rhat is marginal (should increase samples):
+
+```{r}
+#| label: summary-fit_mpt_brm1
+summary(fit_mpt_brm1)
+```
+
+Already can notice teh huge range for ld_item_typeN, which makes sense because as I noted that condition does not have an effect on the likelihood. Let's turn into proportion scale to compare with original model:
+
+```{r}
+#| label: summary-fit_mpt_brm1_invlogit
+inv_logit <- function(x) 1/(1+exp(-x))
+fit_mpt_brm1 |> 
+  as_draws_array(variable = "b_l._", regex = TRUE) |> 
+  inv_logit() |> 
+  summary()
+```
+
+a, b and g are roughly the same as the non-brms model. The others are not so much. D_F = 0.246, D_n = 0.296, D_R = 0.598. In the original model D_R was constrained to be the same as D_N, which here it's clearly not. But is that a problem with the brms model or would it also appear if we did not constrain D_R = D_N in the non-brms model? I'll come back to this. Let's look at some plots:
+
+```{r}
+#| label: plot-fit_mpt_brm1
+plot(fit_mpt_brm1, ask = FALSE)
+```
+
+Some strange posterior distributions. How about the pairs plot?
+
+```{r}
+#| label: pairs-plot-fit_mpt_brm1
+pairs(fit_mpt_brm1)
+```
+
+alright that looks bad! Clear screaming issues with identifiability. 
+
+As a curiousity, how does the non-bayesian model fare if we relax the D_N = D_R constraint:
+
+```{r}
+mpt_fit2 <- fit.mpt(
+  data = colSums(data_mat), 
+  model.filename = textConnection(full_model), 
+  restrictions.filename = textConnection("d_RA = d_RB\nd_FA = d_FB")
+)
+mpt_fit2$goodness.of.fit
+print(mpt_fit2$parameters, digits = 3)
+```
+
+## Fit authors' MPT model with BRMS: Attemp 2
+
+Small change first. Fix the ld_item_typeN
+
+<!-- ## Fixing D_R = D_N
+
+Two ways - recode in data for the predictor variable; make the parameter explicit and let both have an nlf of D. -->
