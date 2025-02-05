@@ -12,4 +12,5 @@ inst/doc
 /tests/internal/cmdstanr_output/
 /tests/internal/*cache*
 *.html
-*/*_files/*
+*/*_files/libs
+*/*_files/*-html
