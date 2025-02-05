@@ -21,6 +21,7 @@ library(tidyr)
 library(knitr)
 library(MPTinR)
 library(brms)
+library(bmm)
 library(cmdstanr)
 ```
 
@@ -334,6 +335,7 @@ alright that looks bad! Clear screaming issues with identifiability.
 As a curiousity, how does the non-bayesian model fare if we relax the D_N = D_R constraint:
 
 ```{r}
+#| label: mpt_fit2
 mpt_fit2 <- fit.mpt(
   data = colSums(data_mat), 
   model.filename = textConnection(full_model), 
@@ -345,8 +347,290 @@ print(mpt_fit2$parameters, digits = 3)
 
 ## Fit authors' MPT model with BRMS: Attemp 2
 
-Small change first. Fix the ld_item_typeN
+Small change first. Fix the ld_item_typeN parameter to be a constant 0
 
-<!-- ## Fixing D_R = D_N
+```{r}
+#| label: fit_mpt_brm2
+#| cache: true
+mpt_prior2 <- mpt_prior1 +
+  prior("constant(0)", nlpar = "ld", class = "b", coef = "item_typeN")
+fit_mpt_brm2 <- brm(
+  mpt_form1, 
+  data = data_brms, 
+  family = multinomial(refcat = NA),
+  prior = mpt_prior2
+)
+```
 
-Two ways - recode in data for the predictor variable; make the parameter explicit and let both have an nlf of D. -->
+summary:
+
+```{r}
+#| label: ssummary-fit_mpt_brm2
+summary(fit_mpt_brm#| 2)
+fit_mpt_brm2 |> 
+  as_draws_array(variable = "b_l._", regex = TRUE) |> 
+  inv_logit() |> 
+  summary()
+```
+
+This didn't really affect any of the other estimates:
+
+```{r}
+#| label: pairs-fit_mpt_brm2
+pairs(fit_mpt_brm2)
+```
+
+## Fit authors' MPT model with BRMS: Attemp 3
+
+Let's try fixing D_R = D_N. Two approaches:
+
+1. Create a new variable item_type2 which codes R and N items the same
+2. Build it into the formula
+
+
+```{r}
+#| label: fit_mpt_brm3
+#| cache: true
+data_brms <- data_brms  |> 
+  mutate(D_type = if_else(item_type == "F", "F", "RN"))
+mpt_form3 <- mpt_form1 + lf(lD ~ 0 + D_type)
+
+fit_mpt_brm3 <- brm(
+  mpt_form3, 
+  data = data_brms, 
+  family = multinomial(refcat = NA),
+  prior = mpt_prior2
+)
+```
+
+First off, the estimation was much faster, which is a good sign. Bulk_ESS are much higher also. The d_F parameter is suspiciously variable.
+
+
+```{r}
+#| label: summary-fit_mpt_brm3
+summary(fit_mpt_brm3)
+```
+
+parameter estimates on the proportion scale:
+
+```{r}
+#| label: summary-invlogit-fit_mpt_brm3
+fit_mpt_brm3 |> 
+  as_draws_array(variable = "^b_l._", regex = TRUE) |> 
+  inv_logit() |> 
+  summary()
+```
+
+the problem is that these are not that similar to the non-bayesian estimates
+
+b is about 0.495 rather than 0.35, D_R/N is 0.471 not 0.688, and although d_F > d_R, and they are "in the ballpark", the difference from 0.879 and 0.395 is still substantial.
+
+I suspect there is still parameter trade-offs. Let's check the pairs:
+
+```{r}
+#| label: pairs-fit_mpt_brm3
+# pdf("output/fit_mpt_brm3_pairs.pdf", width = 11, height = 11)
+pairs(fit_mpt_brm3)
+# dev.off()
+```
+
+some minor issues, but nothing like what we had before. Everything seems to have mixed well also (see regular plot). It is possible that the model I have specified differs.
+
+Maaaybe the problem is the logit wrapper around the mu predictors? The more I think about it the more I'm sure. 
+
+brms applies `softmax` on the mu vector. assume the raw values for mu to be (without my logit wrapper) `mu_prob` (3 values). 
+
+Then currently we have
+
+```
+y ~ multinomial(softmax(logit(mu_prob)))
+```
+
+with 
+
+```
+logit(mu_prob) = log(mu_prop) - log(1 - mu_prop)
+softmax(logit(mu_prob)) = exp(logit(mu_prob)) / sum(exp(logit(mu_prob)))
+softmax(logit(mu_prob)) = mu_prob/(1-mu_prob) / sum(mu_prob/(1-mu_prob))
+```
+
+yup, this is wrong. I should just take the log instead of the logit
+
+```{r}
+#| label: fit_mpt_brm4
+#| cache: true
+mpt_base_formula <- bf(y | trials(total) ~ 1, nl = TRUE)
+mpt_mus_formulas4 <- list(
+  nlf(
+    muA ~ log(
+      tree1 * (D*(1-d)*a + (1-D)*b*g + D*d) + 
+      tree2 * (D*(1-d)*a + (1-D)*b*g) + 
+      tree3 * (D*(1-d)*a + (1-D)*b*g + D*d) + 
+      tree4 * (D*(1-d)*a + (1-D)*b*g) + 
+      tree5 * ((1-D)*b*g)
+    )
+  ),
+  nlf(
+    muB ~ log(
+      tree1 * (D*(1-d)*(1-a) + (1-D)*b*(1-g)) +
+      tree2 * (D*(1-d)*(1-a) + (1-D)*b*(1-g) + D*d) +
+      tree3 * (D*(1-d)*(1-a) + (1-D)*b*(1-g)) +
+      tree4 * (D*(1-d)*(1-a) + (1-D)*b*(1-g) + D*d) +
+      tree5 * ((1-D)*b*(1-g))
+    )
+  ),
+  nlf(
+    muN ~ log(
+      tree1 * ((1-D)*(1-b)) +
+      tree2 * ((1-D)*(1-b)) +
+      tree3 * ((1-D)*(1-b)) +
+      tree4 * ((1-D)*(1-b)) +
+      tree5 * ((1-D)*(1-b) + D)
+    )
+  )
+) 
+
+mpt_par_formulas <- list(
+  nlf(D ~ inv_logit(lD)),
+  nlf(d ~ inv_logit(ld)),
+  nlf(a ~ inv_logit(la)),
+  nlf(b ~ inv_logit(lb)),
+  nlf(g ~ inv_logit(lg))
+)
+
+mpt_pred_formulas4 <- list(
+  lf(lD ~ 0 + D_type),
+  lf(ld ~ 0 + item_type),
+  lf(la ~ 1),
+  lf(lb ~ 1),
+  lf(lg ~ 1)
+)
+
+
+mpt_form4 <- Reduce(`+`, c(mpt_mus_formulas4, mpt_par_formulas, mpt_pred_formulas4), init = mpt_base_formula)
+
+fit_mpt_brm4 <- brm(
+  mpt_form4, 
+  data = data_brms, 
+  family = multinomial(refcat = NA),
+  prior = mpt_prior2
+)
+```
+
+
+
+```{r}
+#| label: summary-fit_mpt_brm4
+fit_mpt_brm4
+```
+
+
+```{r}
+#| label: summary-invlogit-fit_mpt_brm4
+fit_mpt_brm4 |> 
+  as_draws_array(variable = "^b_l._", regex = TRUE) |> 
+  inv_logit() |> 
+  summary()
+```
+
+Now we are talking! These results are virtually identical to the non-brms estimates:
+
+```{r}
+#| label: original-agg-est
+print(agg_est[idx,], digits = 3)
+```
+
+Now we can incorporate random effects:
+
+```{r}
+#| label: fit_mpt_brm5
+#| cache: true
+
+mpt_form5 <- mpt_form4 + lf(
+  lD ~ 0 + D_type + (0 + D_type | id),
+  ld ~ 0 + item_type + (0 + item_type | id),
+  la ~ 1 + (1|id),
+  lb ~ 1 + (1|id),
+  lg ~ 1 + (1|id)
+)
+
+mpt_prior5 <- mpt_prior2 + prior("constant(0.00001)", class = "sd", nlpar = "ld", coef = "item_typeN", group = "id")
+
+
+fit_mpt_brm5 <- brm(
+  mpt_form5, 
+  data = data_brms, 
+  family = multinomial(refcat = NA),
+  prior = mpt_prior5
+)
+```
+
+
+
+```{r}
+#| label: summary-invlogit-fit_mpt_brm5
+summary(fit_mpt_brm5)
+fit_mpt_brm5 |> 
+  as_draws_array(variable = "^b_l._", regex = TRUE) |> 
+  inv_logit() |> 
+  summary()
+```
+
+There is substantial variability in the D_F, D_R, b, d_F and d_R parameters
+
+
+```{r}
+pred5 <- predict(fit_mpt_brm5)
+pred5[,1,]
+
+pred4 <- predict(fit_mpt_brm4)
+pred4[,1,]
+
+sqrt(mean((data_brms$y-pred4[,1,])**2))
+sqrt(mean((data_brms$y-pred5[,1,])**2))
+
+# G^2
+2 * sum(data_brms$y*(log(data_brms$y)-log(pred5[,1,])), na.rm = T)
+2 * sum(data_brms$y*(log(data_brms$y)-log(pred4[,1,])), na.rm = T)
+```
+
+
+## Fit the M3 model
+
+
+```{r}
+library(bmm)
+
+bmmformula <- bmf(
+  A ~ tree1*cR + tree3*cF + b + b2 + DR*(tree1+tree2) + DF*(tree3+tree4) + a,
+  B ~ tree2*cR + tree4*cF + b + b2 + DR*(tree1+tree2) + DF*(tree3+tree4),
+  N ~ b + DN*tree5,
+  cR ~ 1,
+  cF ~ 1,
+  b2 ~ 1,
+  DR ~ 1,
+  DF ~ 1,
+  DN ~ 1,
+  a ~ 1
+)
+
+bmmodel <- m3(
+  resp_cats = c("A", "B", "N"),
+  num_options = c(1, 1, 1), 
+  choice_rule = "softmax", 
+  version = "custom",
+  links = list(cR = "log", cF = "log", b2 = "log", DR = "log", DF = "log", DN = "log", a = "log")
+)
+
+fitm3 <- bmm(
+  formula = bmmformula,
+  data = data_brms,
+  model = bmmodel
+)
+
+predm3 <- predict(fitm3)
+predm3[,1,]  |> head(10)
+head(data_brms$y, 10)
+sqrt(mean((predm3[,1,]-data_brms$y)**2))
+sqrt(mean((pred4[,1,]-data_brms$y)**2))
+```
