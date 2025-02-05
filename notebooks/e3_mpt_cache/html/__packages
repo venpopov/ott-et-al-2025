@@ -5,6 +5,7 @@ knitr
 MPTinR
 Rcpp
 brms
+bmm
 cmdstanr
 StanHeaders
 rstan

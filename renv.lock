@@ -464,6 +464,29 @@
       ],
       "Hash": "40415719b5a479b87949f3aa0aee737c"
     },
+    "bmm": {
+      "Package": "bmm",
+      "Version": "1.1.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "bmm",
+      "RemoteUsername": "venpopov",
+      "RemoteSha": "80b93ebf7ab1e835e8607ac96b9a89317a8d6d58",
+      "Requirements": [
+        "R",
+        "brms",
+        "crayon",
+        "fs",
+        "glue",
+        "matrixStats",
+        "methods",
+        "parallel",
+        "stats",
+        "withr"
+      ],
+      "Hash": "d874341bbe378ce7595230080fd1afaf"
+    },
     "boot": {
       "Package": "boot",
       "Version": "1.3-31",
