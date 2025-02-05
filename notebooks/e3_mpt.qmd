@@ -602,15 +602,14 @@ sqrt(mean((data_brms$y-pred5[,1,])**2))
 library(bmm)
 
 bmmformula <- bmf(
-  A ~ tree1*cR + tree3*cF + b + b2 + DR*(tree1+tree2) + DF*(tree3+tree4) + a,
-  B ~ tree2*cR + tree4*cF + b + b2 + DR*(tree1+tree2) + DF*(tree3+tree4),
-  N ~ b + DN*tree5,
+  A ~ tree1*cR + tree3*cF + b + b2 + DRN*(tree1+tree2) + DF*(tree3+tree4) + a,
+  B ~ tree2*cR + tree4*cF + b + b2 + DRN*(tree1+tree2) + DF*(tree3+tree4),
+  N ~ b + DRN*tree5,
   cR ~ 1,
   cF ~ 1,
   b2 ~ 1,
-  DR ~ 1,
+  DRN ~ 1,
   DF ~ 1,
-  DN ~ 1,
   a ~ 1
 )
 
@@ -619,7 +618,7 @@ bmmodel <- m3(
   num_options = c(1, 1, 1), 
   choice_rule = "softmax", 
   version = "custom",
-  links = list(cR = "log", cF = "log", b2 = "log", DR = "log", DF = "log", DN = "log", a = "log")
+  links = list(cR = "identity", cF = "identity", b2 = "identity", DRN = "identity", DF = "identity", a = "identity")
 )
 
 fitm3 <- bmm(
@@ -633,4 +632,43 @@ predm3[,1,]  |> head(10)
 head(data_brms$y, 10)
 sqrt(mean((predm3[,1,]-data_brms$y)**2))
 sqrt(mean((pred4[,1,]-data_brms$y)**2))
+```
+
+
+with ranefs
+
+```{r}
+library(bmm)
+
+bmmformula2 <- bmf(
+  A ~ tree1*cR + tree3*cF + b + b2 + DRN*(tree1+tree2) + DF*(tree3+tree4) + a,
+  B ~ tree2*cR + tree4*cF + b + b2 + DRN*(tree1+tree2) + DF*(tree3+tree4),
+  N ~ b + DRN*tree5,
+  cR ~ 1 + (1|id),
+  cF ~ 1 + (1|id),
+  b2 ~ 1 + (1|id),
+  DRN ~ 1 + (1|id),
+  DF ~ 1 + (1|id),
+  a ~ 1 + (1|id)
+)
+
+bmmodel <- m3(
+  resp_cats = c("A", "B", "N"),
+  num_options = c(1, 1, 1), 
+  choice_rule = "softmax", 
+  version = "custom",
+  links = list(cR = "identity", cF = "identity", b2 = "identity", DRN = "identity", DF = "identity", a = "identity")
+)
+
+fitm3_2 <- bmm(
+  formula = bmmformula2,
+  data = data_brms,
+  model = bmmodel
+)
+
+predm3_2 <- predict(fitm3_2)
+predm3_2[,1,]  |> head(10)
+head(data_brms$y, 10)
+sqrt(mean((predm3_2[,1,]-data_brms$y)**2))
+sqrt(mean((pred5[,1,]-data_brms$y)**2))
 ```
